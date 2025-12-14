@@ -1,4 +1,5 @@
 ﻿using CadastroClientes.Models;
+using System.Linq;
 
 //CADASTRO DE CLIENTES - VERSÃO INICIAL
 bool executando = true;
@@ -73,7 +74,29 @@ while (executando)
             break;
 
         case "3":
-            Console.WriteLine("Busca de cliente por CPF (em desenvolvimento)");
+            Console.Clear();
+            Console.WriteLine("=== BUSCAR CLIENTE POR CPF ===");
+
+            Console.Write("Digite o CPF do cliente: ");
+            string? cpfBusca = Console.ReadLine();
+
+            var clienteEncontrado = clientes.FirstOrDefault(c => c.Cpf == cpfBusca);
+
+            if (clienteEncontrado == null)
+            {
+                Console.WriteLine("Cliente não encontrado.");
+            }
+
+            else
+            {
+                Console.WriteLine("Cliente encontrado:");
+                Console.WriteLine($"ID: {clienteEncontrado.Id}");
+                Console.WriteLine($"Nome: {clienteEncontrado.Nome}");
+                Console.WriteLine($"CPF: {clienteEncontrado.Cpf}");
+                Console.WriteLine($"Email: {clienteEncontrado.Email}");
+                Console.WriteLine($"Data de Cadastro: {clienteEncontrado.DataCadastro}");
+            }
+
             Console.ReadKey();
             break;
 
