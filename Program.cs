@@ -1,9 +1,16 @@
-﻿bool executando = true;
+﻿using CadastroClientes.Models;
+
+//CADASTRO DE CLIENTES - VERSÃO INICIAL
+bool executando = true;
+
+List<Cliente> clientes = new List<Cliente>();
+int proximoId = 1;
 
 while (executando)
 {
+    string tituloDoSistema = "=== SISTEMA DE CADASTRO DE CLIENTES ===";
     Console.Clear();
-    Console.WriteLine("=== SISTEMA DE CADASTRO DE CLIENTES ===");
+    Console.WriteLine(tituloDoSistema);
     Console.WriteLine("1 - Cadastrar cliente");
     Console.WriteLine("2 - Listar clientes");
     Console.WriteLine("3 - Buscar cliente por CPF");
@@ -15,22 +22,46 @@ while (executando)
     switch (opcao)
     {
         case "1":
-            Console.WriteLine("Cadastro de cliente (em desenvolvimento)");
+            Console.Clear();
+            Console.WriteLine("=== CADASTRO DE CLIENTE ===");
+
+            Cliente cliente = new Cliente();
+
+            cliente.Id = proximoId++;
+
+            Console.Write("Nome: ");
+            cliente.Nome = Console.ReadLine() ?? "";
+
+            Console.Write("CPF: ");
+            cliente.Cpf = Console.ReadLine() ?? "";
+
+            Console.Write("Email: ");
+            cliente.Email = Console.ReadLine() ?? "";
+
+            cliente.DataCadastro = DateTime.Now;
+
+            clientes.Add(cliente);
+
+            Console.WriteLine("Cliente cadastrado com sucesso!");
             Console.ReadKey();
             break;
+
         case "2":
             Console.WriteLine("Listagem de clientes (em desenvolvimento)");
             Console.ReadKey();
             break;
+
         case "3":
             Console.WriteLine("Busca de cliente por CPF (em desenvolvimento)");
             Console.ReadKey();
             break;
+
         case "0":
             executando = false;
             Console.WriteLine("Saindo do programa...");
             Console.ReadKey();
             break;
+
         default:
             Console.WriteLine("Opção inválida. Tente novamente.");
             Console.ReadKey();
