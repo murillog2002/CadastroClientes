@@ -47,7 +47,28 @@ while (executando)
             break;
 
         case "2":
-            Console.WriteLine("Listagem de clientes (em desenvolvimento)");
+            Console.Clear();
+            Console.WriteLine("=== LISTA DE CLIENTES ===\n");
+
+            if (clientes.Count == 0)
+            {
+                Console.WriteLine("Nenhum cliente cadastrado.");
+                Console.ReadKey();
+                break;
+            }
+
+            else
+            {
+                foreach (var c in clientes)
+                {
+                    Console.WriteLine($"ID: {c.Id}");
+                    Console.WriteLine($"Nome: {c.Nome}");
+                    Console.WriteLine($"CPF: {c.Cpf}");
+                    Console.WriteLine($"Email: {c.Email}");
+                    Console.WriteLine($"Data de Cadastro: {c.DataCadastro}");
+                    Console.WriteLine(new string('-', 30));
+                }
+            }
             Console.ReadKey();
             break;
 
