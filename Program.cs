@@ -31,13 +31,34 @@ while (executando)
             cliente.Id = proximoId++;
 
             Console.Write("Nome: ");
-            cliente.Nome = Console.ReadLine() ?? "";
+            cliente.Nome = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(cliente.Nome))
+            {
+                Console.WriteLine("Nome inválido. O nome não pode estar vazio.");
+                Console.ReadKey();
+                break;
+            }
 
             Console.Write("CPF: ");
-            cliente.Cpf = Console.ReadLine() ?? "";
+            cliente.Cpf = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(cliente.Cpf) || cliente.Cpf.Length != 11 || !cliente.Cpf.All(char.IsDigit))
+            {
+                Console.WriteLine("CPF inválido. O CPF deve conter exatamente 11 dígitos numéricos.");
+                Console.ReadKey();
+                break;
+            }
 
             Console.Write("Email: ");
-            cliente.Email = Console.ReadLine() ?? "";
+            cliente.Email = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(cliente.Email) || !cliente.Email.Contains("@"))
+            {
+                Console.WriteLine("Email inválido. O email deve conter o caractere '@'.");
+                Console.ReadKey();
+                break;
+            }
 
             cliente.DataCadastro = DateTime.Now;
 
@@ -104,6 +125,7 @@ while (executando)
             executando = false;
             Console.WriteLine("Saindo do programa...");
             Console.ReadKey();
+            Console.Clear();
             break;
 
         default:
