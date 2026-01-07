@@ -9,9 +9,9 @@ namespace CadastroClientes.Models
     public class Cliente
     {
         public int Id { get; set; }
-        public string Nome { get; set; }
-        public string Cpf { get; set; }
-        public string Email { get; set; }
+        public required string Nome { get; set; }
+        public required string Cpf { get; set; }
+        public required string Email { get; set; }
         public DateTime DataCadastro { get; set; }
     }
 }
